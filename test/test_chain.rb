@@ -99,5 +99,12 @@ class TestChain < MiniTest::Unit::TestCase
     assert_refutes { assert(a).same(b) }
     assert_refutes { assert(a).not_same(a) }
   end
+
+  def test_chain
+    assert(1)
+      .is(:>, 0)
+      .equal(1)
+      .instance_of(Fixnum)
+  end
 end
 

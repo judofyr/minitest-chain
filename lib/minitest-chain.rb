@@ -19,10 +19,12 @@ module MiniTest::Chain
       class_eval <<-RUBY, __FILE__, __LINE__+1
         def #{name}(other, *args)
           @scope.assert_#{assertion}(other, @obj, *args)
+          self
         end
 
         def not_#{name}(other, *args)
           @scope.refute_#{assertion}(other, @obj, *args)
+          self
         end
       RUBY
     end
@@ -37,10 +39,12 @@ module MiniTest::Chain
       class_eval <<-RUBY, __FILE__, __LINE__+1
         def #{name}(*args)
           @scope.assert_#{assertion}(@obj, *args)
+          self
         end
 
         def not_#{name}(*args)
           @scope.refute_#{assertion}(@obj, *args)
+          self
         end
       RUBY
     end
