@@ -3,6 +3,8 @@
 MiniTest::Chain gives you readable, RSpec-comparable, chainable assertions:
 
 ```ruby
+require 'minitest-chain'
+
 class TestChain < MiniTest::Unit::TestCase
   include MiniTest::Chain
   
