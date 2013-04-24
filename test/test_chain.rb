@@ -67,18 +67,24 @@ class TestChain < MiniTest::Unit::TestCase
 
   def test_is
     assert(1).is(:<, 2)
-    assert(3).isnt(:<, 2)
+    assert(3).is_not(:<, 2)
 
     assert_refutes { assert(3).is(:<, 2) }
-    assert_refutes { assert(1).isnt(:<, 2) }
+    assert_refutes { assert(1).is_not(:<, 2) }
+  end
+
+  def test_not_is
+    assert_raises(NoMethodError) do
+      assert(1).not_is(:zero?)
+    end
   end
 
   def test_is_predicate
     assert([]).is(:empty?)
-    assert([1]).isnt(:empty?)
+    assert([1]).is_not(:empty?)
 
     assert_refutes { assert([1]).is(:empty?) }
-    assert_refutes { assert([]).isnt(:empty?) }
+    assert_refutes { assert([]).is_not(:empty?) }
   end
 
   def test_respond_to

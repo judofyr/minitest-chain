@@ -49,7 +49,8 @@ module MiniTest::Chain
       RUBY
     end
 
-    alias isnt not_is
+    alias is_not not_is
+    remove_method :not_is
   end
 
   def assert(obj, *args)
