@@ -34,6 +34,7 @@ The following assertions are available:
 * #close_to (assert_in_delta)
 * #within_epsilon (assert_in_epsilon)
 * #instance_of (assert_instance_of)
+* #kind_of (assert_kind_of)
 * #same (assert_same)
 * #empty (assert_empty)
 * #include (assert_includes)
