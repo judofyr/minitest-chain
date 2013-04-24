@@ -17,6 +17,12 @@ class TestChain < MiniTest::Unit::TestCase
     assert(2 - 2).is(:zero?)
     assert(2 - 1).is_not(:zero?)
   end
+
+  # expect doesn't require the value to be truthy
+  def test_expect
+    list = [1, 2, 3]
+    expect(list.index(4)).nil
+  end
 end
 ```
 
@@ -24,6 +30,7 @@ The following assertions are available:
 
 * #equal (assert_equal)
 * #match (assert_match)
+* #nil (assert_nil)
 * #close_to (assert_in_delta)
 * #within_epsilon (assert_in_epsilon)
 * #instance_of (assert_instance_of)
