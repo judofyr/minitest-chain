@@ -65,6 +65,14 @@ class TestChain < MiniTest::Unit::TestCase
     assert_refutes { assert(1  ).not_instance_of(Fixnum) }
   end
 
+  def test_kind_of
+    assert(1).kind_of(Numeric)
+    assert("").not_kind_of(Numeric)
+
+    assert_refutes { assert("").kind_of(Numeric) }
+    assert_refutes { assert(1).not_kind_of(Numeric) }
+  end
+
   def test_is
     assert(1).is(:<, 2)
     assert(3).is_not(:<, 2)

@@ -16,6 +16,7 @@ module MiniTest::Chain
       [:close_to, :in_delta],
       [:within_epsilon, :in_epsilon],
       [:instance_of, :instance_of],
+      [:kind_of, :kind_of],
       [:same, :same],
     ].each do |name, assertion|
       class_eval <<-RUBY, __FILE__, __LINE__+1
