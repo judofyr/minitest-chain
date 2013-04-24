@@ -112,5 +112,13 @@ class TestChain < MiniTest::Unit::TestCase
       .equal(1)
       .instance_of(Fixnum)
   end
+
+  def test_nil
+    expect(nil).nil
+    expect(1).not_nil
+
+    assert_refutes { expect(1).nil }
+    assert_refutes { expect(nil).not_nil }
+  end
 end
 

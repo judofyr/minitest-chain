@@ -34,6 +34,7 @@ module MiniTest::Chain
     # Unaries and reversers:
     [
       [:empty, :empty],
+      [:nil, :nil],
       [:include, :includes],
       [:is, :operator],
       [:respond_to, :respond_to],
@@ -57,6 +58,10 @@ module MiniTest::Chain
 
   def assert(obj, *args)
     super
+    AssertionChain.new(self, obj)
+  end
+
+  def expect(obj)
     AssertionChain.new(self, obj)
   end
 end
