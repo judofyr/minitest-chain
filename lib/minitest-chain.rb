@@ -2,9 +2,11 @@ require 'minitest/unit'
 
 module MiniTest::Chain
   class AssertionChain
-    def initialize(scope, obj)
+    attr_reader :scope, :subject
+
+    def initialize(scope, subject)
       @scope = scope
-      @obj = obj
+      @subject = subject
     end
 
     # Flippers:
@@ -18,12 +20,12 @@ module MiniTest::Chain
     ].each do |name, assertion|
       class_eval <<-RUBY, __FILE__, __LINE__+1
         def #{name}(other, *args)
-          @scope.assert_#{assertion}(other, @obj, *args)
+          scope.assert_#{assertion}(other, subject, *args)
           self
         end
 
         def not_#{name}(other, *args)
-          @scope.refute_#{assertion}(other, @obj, *args)
+          scope.refute_#{assertion}(other, subject, *args)
           self
         end
       RUBY
@@ -38,12 +40,12 @@ module MiniTest::Chain
     ].each do |name, assertion|
       class_eval <<-RUBY, __FILE__, __LINE__+1
         def #{name}(*args)
-          @scope.assert_#{assertion}(@obj, *args)
+          scope.assert_#{assertion}(subject, *args)
           self
         end
 
         def not_#{name}(*args)
-          @scope.refute_#{assertion}(@obj, *args)
+          scope.refute_#{assertion}(subject, *args)
           self
         end
       RUBY
