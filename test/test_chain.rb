@@ -128,5 +128,29 @@ class TestChain < MiniTest::Unit::TestCase
     assert_refutes { expect(1).nil }
     assert_refutes { expect(nil).not_nil }
   end
+
+  def test_raises
+    expect { raise TypeError }.raises(TypeError)
+
+    assert_refutes { expect { }.raises(TypeError) }
+  end
+
+  def test_throws
+    expect { throw :foo }.throws(:foo)
+
+    assert_refutes { expect { }.throws(:foo) }
+    assert_refutes { expect { throw :bar }.throws(:foo) }
+  end
+
+  def test_silent
+    expect { }.silent
+
+    assert_refutes { expect { puts 'hello' }.silent }
+  end
+
+  def test_output
+    expect { puts 'hello' }.output("hello\n")
+    expect { $stderr.puts 'hello' }.output("", "hello\n")
+  end
 end
 

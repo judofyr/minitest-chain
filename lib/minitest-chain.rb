@@ -53,6 +53,26 @@ module MiniTest::Chain
       RUBY
     end
 
+    # Blocks:
+    [
+      [:raises, :raises],
+      [:throws, :throws],
+      [:silent, :silent],
+      [:output, :output],
+    ].each do |name, assertion|
+      class_eval <<-RUBY, __FILE__, __LINE__+1
+        def #{name}(*args)
+          scope.assert_#{assertion}(*args, &subject)
+          self
+        end
+
+        def not_#{name}(*args)
+          scope.refute_#{assertion}(*args, &subject)
+          self
+        end
+      RUBY
+    end
+
     alias is_not not_is
     remove_method :not_is
   end
@@ -62,7 +82,8 @@ module MiniTest::Chain
     AssertionChain.new(self, obj)
   end
 
-  def expect(obj)
+  def expect(obj = nil, &blk)
+    obj ||= blk
     AssertionChain.new(self, obj)
   end
 end
