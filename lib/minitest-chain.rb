@@ -65,11 +65,6 @@ module MiniTest::Chain
           scope.assert_#{assertion}(*args, &subject)
           self
         end
-
-        def not_#{name}(*args)
-          scope.refute_#{assertion}(*args, &subject)
-          self
-        end
       RUBY
     end
 

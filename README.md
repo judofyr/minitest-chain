@@ -18,10 +18,13 @@ class TestChain < MiniTest::Unit::TestCase
     assert(2 - 1).is_not(:zero?)
   end
 
-  # expect doesn't require the value to be truthy
   def test_expect
     list = [1, 2, 3]
     expect(list.index(4)).nil
+  end
+
+  def test_expect_raise
+    expect { 1 + '2' }.raises(TypeError)
   end
 end
 ```
@@ -40,8 +43,13 @@ The following assertions are available:
 * #include (assert_includes)
 * #is (assert_operator / assert_predicate)
 * #respond_to (assert_respond_to)
+* #raises (assert_raises)
+* #throws (assert_throws)
+* #silent (assert_silent)
+* #output (assert_output)
 
 You can negate the assertion by prepending the method name with `not_` (e.g.
 `not_equal`). The only exception being `is` which can be negated by `is_not`.
 
+You can use `expect` to start a chain without requiring a value to be truthy.
 
