@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 gem 'rake'
-gem 'minitest', MINITEST_VERSION if MINITEST_VERSION
+gem 'minitest', ENV['MINITEST_VERSION'] if ENV['MINITEST_VERSION']
 gemspec
 
