@@ -14,5 +14,5 @@ Gem::Specification.new do |s|
   s.files         = Dir['{test,lib}/*']
   s.test_files    = Dir['test/**/*'] + Dir['spec/**/*']
 
-  s.add_runtime_dependency('minitest', '~> 4.0')
+  s.add_runtime_dependency('minitest', '> 4.0', '< 6')
 end
