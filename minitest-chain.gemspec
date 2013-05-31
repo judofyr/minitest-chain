@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name     = "minitest-chain"
-  s.version  = "0.5.1"
-  s.date     = "2013-04-25"
+  s.version  = "0.5.2"
+  s.date     = "2013-05-31"
   s.summary  = "Chainable assertions for MiniTest"
   s.email    = "judofyr@gmail.com"
   s.homepage = "https://github.com/judofyr/minitest-chain"
